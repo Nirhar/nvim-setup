@@ -4,7 +4,7 @@
 
 -- Core settings for neovim, ex vim.g and vim.o/opt options
 require("basic-settings")
-
+require("diagnostics")
 
 -- Welcome to me!
 print("Yo! Ready to code?");
