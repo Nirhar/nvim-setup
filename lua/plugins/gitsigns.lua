@@ -11,5 +11,7 @@ do
 	    changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
 	  },
 	}
+
+	-- TODO: Add keymap to toggle gitsigns
 end
 

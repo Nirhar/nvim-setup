@@ -33,10 +33,10 @@ do
 
 	-- Indentation and Line break related
 	vim.o.breakindent = true
-	-- Show which line your cursor is on
- 	-- vim.o.cursorline = true
+	-- Show which line your cursor is on, by highlighting the current line
+ 	vim.o.cursorline = true
   	-- Minimal number of screen lines to keep above and below the cursor.
-  	-- vim.o.scrolloff = 10
+	-- vim.o.scrolloff = 10
 
 	-- Update time is the time it takes to save file to swap
 	vim.o.updatetime = 250
@@ -52,14 +52,14 @@ do
 	-- vim.o.mouse = 'a'
 	
 	-- Set to true if you have a Nerd Font installed and selected in the terminal
-	-- vim.g.have_nerd_font = false
+	vim.g.have_nerd_font = true
 
   	-- Configure how new splits should be opened
-  	-- vim.o.splitright = true
-	-- vim.o.splitbelow = true
+  	vim.o.splitright = true
+	vim.o.splitbelow = true
 	
 	-- Don't show the mode, since it's already in the status line
-  	-- vim.o.showmode = false
+  	vim.o.showmode = true
 	
 	-- Sets how neovim will display certain whitespace characters in the editor.
 	--  See `:help 'list'`

@@ -27,4 +27,6 @@ do
 	-- require("plugins/treesitter")
 	-- Disabled because I haven't explored them yet. I'd like to know about their power before trying them out.
 	-- require("plugins/mini")
+	--
+	require("plugins/nvim-tree")
 end

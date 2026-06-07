@@ -8,7 +8,8 @@ do
   -- [[ Formatting ]]
   vim.pack.add { helpers.gh 'stevearc/conform.nvim' }
   require('conform').setup {
-    notify_on_error = false,
+    -- Not sure on what kind of error this triggers.
+    notify_on_error = true,
     format_on_save = function(bufnr)
       -- You can specify filetypes to autoformat on save here:
       local enabled_filetypes = {
@@ -36,6 +37,6 @@ do
     },
   }
 
-  vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>fb', function() require('conform').format { async = true } end, { desc = '[F]ormat [B]uffer' })
   -- TODO: Add keymap to format only selection.
 end

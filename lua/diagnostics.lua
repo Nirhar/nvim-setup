@@ -1,11 +1,14 @@
 do
-
   -- Diagnostic Config & Keymaps
   --  See `:help vim.diagnostic.Opts`
   vim.diagnostic.config {
+    -- Only update diagnostics when we stop editing and return to normal mode
     update_in_insert = false,
+    -- Show severe issues first
     severity_sort = true,
+    -- How the display should look?
     float = { border = 'rounded', source = 'if_many' },
+    -- underline code only with this level of severity
     underline = { severity = { min = vim.diagnostic.severity.WARN } },
 
     -- Can switch between these as you prefer
@@ -23,6 +26,7 @@ do
       end,
     },
   }
-
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+  
+  vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostics [L]ist' })
+  vim.keymap.set('n', '<leader>dc', vim.diagnostic.open_float, { desc = 'Open [D]iagnostics [C]urrent' })
 end
