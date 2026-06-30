@@ -7,9 +7,9 @@ do
 	vim.loader.enable()
 
 	-- Set the leader key
-	vim.g.mapleader = ' '
+	vim.g.mapleader = " "
 	-- Local leader is to execute filetype specific commands
-	vim.g.maplocalleader = ' '
+	vim.g.maplocalleader = " "
 	-- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 	-- vim.keymap.set('n', '<leader>h', ':echo "leader works!"<CR>')
 
@@ -19,7 +19,9 @@ do
 
 	-- Sync clipboard between OS and Neovim
 	-- We schedule the setting after UiEnter because it can increase startup-time
-	vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+	vim.schedule(function()
+		vim.o.clipboard = "unnamedplus"
+	end)
 
 	-- Enable undo/redo changes even after closing and reopening a file
 	vim.o.undofile = true
@@ -29,13 +31,13 @@ do
 	vim.o.smartcase = true
 
 	-- Signcolumn is a narrow column to the left of a window that shows git signs, breakpoints LSP diagnostics etc.
-	vim.o.signcolumn = 'yes'
+	vim.o.signcolumn = "yes"
 
 	-- Indentation and Line break related
 	vim.o.breakindent = true
 	-- Show which line your cursor is on, by highlighting the current line
- 	vim.o.cursorline = true
-  	-- Minimal number of screen lines to keep above and below the cursor.
+	vim.o.cursorline = true
+	-- Minimal number of screen lines to keep above and below the cursor.
 	-- vim.o.scrolloff = 10
 
 	-- Update time is the time it takes to save file to swap
@@ -50,17 +52,17 @@ do
 
 	-- Enable mouse mode, can be useful for resizing splits for example!
 	-- vim.o.mouse = 'a'
-	
+
 	-- Set to true if you have a Nerd Font installed and selected in the terminal
 	vim.g.have_nerd_font = true
 
-  	-- Configure how new splits should be opened
-  	vim.o.splitright = true
+	-- Configure how new splits should be opened
+	vim.o.splitright = true
 	vim.o.splitbelow = true
-	
+
 	-- Don't show the mode, since it's already in the status line
-  	vim.o.showmode = true
-	
+	vim.o.showmode = true
+
 	-- Sets how neovim will display certain whitespace characters in the editor.
 	--  See `:help 'list'`
 	--  and `:help 'listchars'`
@@ -74,5 +76,28 @@ do
 
 	-- Preview substitutions live, as you type!
 	-- vim.o.inccommand = 'split'
+	--
+	
+	-- Indentation for each language
+	-- ts = tabwidth, sw = shiftwidth, expand = expandtab(true = use spaces instead of tabs)
+	local indent_settings = {
+		lua = { ts = 2, sw = 2, expand = true },
+		python = { ts = 4, sw = 4, expand = true },
+		javascript = { ts = 2, sw = 2, expand = true },
+		typescript = { ts = 2, sw = 2, expand = true },
+		c = { ts = 4, sw = 4, expand = false }, -- use actual tabs
+		cpp = { ts = 2, sw = 2, expand = true },
+		go = { ts = 4, sw = 4, expand = false },
+	}
 
+	for lang, cfg in pairs(indent_settings) do
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = lang,
+			callback = function()
+				vim.opt_local.tabstop = cfg.ts
+				vim.opt_local.shiftwidth = cfg.sw
+				vim.opt_local.expandtab = cfg.expand
+			end,
+		})
+	end
 end
