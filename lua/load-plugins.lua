@@ -29,4 +29,5 @@ do
 	-- require("plugins/mini")
 	--
 	require("plugins/nvim-tree")
+  require("plugins/markdown-preview")
 end
