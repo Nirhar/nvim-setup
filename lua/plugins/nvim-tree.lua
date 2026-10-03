@@ -37,6 +37,8 @@ do
 				local node = api.tree.get_node_under_cursor()
 				if node and node.type == "file" then
 					helpers.open_or_switch_tab(node.absolute_path)
+        else
+          api.node.open.edit()
 				end
 			end
 
