@@ -15,6 +15,7 @@ do
 	    { '<leader>t', group = '[T]oggle' },
 	    { '<leader>l', group = '[L]ist directory' },
 	    { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
+	    { '<leader>c', group = '[C]laude', mode = { 'n', 'v' } }, 
 	    { 'gr', group = 'LSP Actions', mode = { 'n' } },
 	  },
 	}

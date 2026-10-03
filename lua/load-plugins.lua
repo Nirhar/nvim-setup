@@ -30,4 +30,5 @@ do
 	--
 	require("plugins/nvim-tree")
   require("plugins/markdown-preview")
+  require("plugins/claude")
 end
