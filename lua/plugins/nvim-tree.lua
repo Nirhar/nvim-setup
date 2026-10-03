@@ -47,10 +47,19 @@ do
 		end
 	})
 
+  -- Helper function to focus/unfocus the file tree
+  local function focus_unfocus_filetree()
+    if vim.bo.filetype == "NvimTree" then
+      vim.cmd("wincmd p")
+    else
+      vim.cmd("NvimTreeFocus")
+    end
+  end
+
 
 	-- TODO: Key mappings
-	vim.keymap.set("n", "<leader>tf", ":NvimTreeToggle<CR>", { desc = "[F]ile tree" })
-	vim.keymap.set("n", "<leader>lf", ":NvimTreeFocus<CR>", { desc = "[F]ocus file tree" })
-	vim.keymap.set("n", "<leader>ls", ":NvimTreeFindFile<CR>", { desc = "[S]how current file in file tree" })
+	vim.keymap.set("n", "<leader>ft", ":NvimTreeToggle<CR>", { desc = "[F]ile: [T]oggle file tree" })
+	vim.keymap.set("n", "<leader>ff", focus_unfocus_filetree, { desc = "[F]ile: [F]ocus/Un[F]ocus file tree" })
+	vim.keymap.set("n", "<leader>fs", ":NvimTreeFindFile<CR>", { desc = "[F]ile: [S]how current file in file tree" })
 	
 end
